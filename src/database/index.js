@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 
 function connect() {
-    mongoose.connect('mongodb://127.0.0.1:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+    mongoose.connect('mongodb://127.0.0.1:27017/projeto-crud?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
     
     const db = mongoose.connection
     
