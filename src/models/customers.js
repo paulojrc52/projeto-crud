@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
 
 })
 
-const Model = mongoose.model('custoners', schema)
+const Model = mongoose.model('customers', schema)
 
 
 module.exports = Model 
