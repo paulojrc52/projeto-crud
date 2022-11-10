@@ -36,17 +36,55 @@ async function add(req, res) {
 }
 
 
-async function listUsers(req, res) {
+async function list(req, res) {
     const users = await CustormersModel.find()
 
-    res.render('listUsers', {
+    res.render('list', {
         title: 'Listagem de usuários',
         users,
     })
 }
 
+async function formEdit(req, res) {
+    const { id } = req.query
+
+    const user = await CustormersModel.findById(id)
+
+    res.render('edit', {
+        title: 'Editar Usuário',
+        user
+    }) 
+}
+
+async function edit(req, res) {
+    const {
+        name,
+        age,
+        email,
+    } = req.body
+
+    const { id } = req.params
+
+    const user = await CustormersModel.findById(id)
+
+    user.name = name
+    user.age = age
+    user.email = email
+
+
+    user.save()
+
+    res.render('edit', {
+        title: 'Editar Usuário',
+        user,
+        message: 'Edição salva com sucesso!'
+    }) 
+}
+
 module.exports = {
     add,
     index,
-    listUsers, 
+    list, 
+    formEdit,
+    edit,
 }
