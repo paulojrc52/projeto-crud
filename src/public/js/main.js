@@ -1,1 +1,1 @@
-alert('Ok')
+console.log('ok')
